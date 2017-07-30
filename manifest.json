@@ -8,6 +8,7 @@
       "js": ["jquery.js", "button.js"]
     }
   ],
+  "web_accessible_resources": ["frame.html"],
   "icons": { 
     "48": "images/icon48.png",
     "128": "images/icon48.png" 
