@@ -89,7 +89,7 @@
 
   // response to requests for the repo from the frame script
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.type === "get-repo")
+    if (request.type === 'get-repo')
       sendResponse({repo: getRepo()});
   });
 
