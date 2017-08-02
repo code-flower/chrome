@@ -3,14 +3,19 @@
 
 (function($) {
 
-  chrome.runtime.sendMessage({type: 'request-repo'}, function(response) {
+  chrome.runtime.sendMessage({type: 'request-repo'}, function(repo) {
 
     // when we get a response, first grab the config file
     var configUrl = chrome.extension.getURL('/config.json');
     $.getJSON(configUrl, function(config) {
 
-      // and then add the iframe using the originUrl from the config
-      var url = config.originUrl + '?repo=' + encodeURIComponent(response.repo);
+      // construct url for the iframe
+      var url = config.originUrl + 
+                '?owner='  + repo.owner + 
+                '&name='   + repo.name + 
+                (repo.branch ? '&branch=' + repo.branch : '');
+
+      // add the iframe to the body
       $('body').append(    
         '<iframe ' +
           'src="' + url + '" ' + 
