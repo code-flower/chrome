@@ -58,30 +58,27 @@
 
   }
 
-  // 
   function injectCodeflower() {
+    // add a container to the page to hold the iframe
     var container = $(
       '<div ' + 
-        'style="width: 90vw; height: 90vh; padding: 0px; margin: 0 auto;"' +
-        'class="container codeflower">' + 
+        'class="container codeflower" ' +
+        'style="width: 90vw; height: 80vh; padding: 0px; margin: 0 auto;">' +
       '</div>'
     );
-
     $('.pagehead').next().replaceWith(container);
 
     // get around chrome's content security policy regarding iframes
-    // by creating a frame within a frame
+    // by creating an iframe whose src is within the extension. Inside that
+    // iframe you can add another iframe whose src is a foreign domain. 
     // https://stackoverflow.com/questions/24641592/injecting-iframe-into-page-with-restrictive-content-security-policy
-    var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
-    if (!location.ancestorOrigins.contains(extensionOrigin)) {
-      container.append(
-        '<iframe ' +
-          'src="' + chrome.runtime.getURL('html/frame.html') + '" ' + 
-          'style="width: 100%; height: 100%; border: none; overflower: hidden;" ' + 
-          'allowfullscreen>' + 
-        '</iframe>'
-      );
-    }
+    container.append(
+      '<iframe ' +
+        'src="' + chrome.runtime.getURL('html/frame.html') + '" ' + 
+        'style="width: 100%; height: 100%; border: none; overflower: hidden;" ' + 
+        'allowfullscreen>' + 
+      '</iframe>'
+    );
   }
 
   /////////////////// MAIN ///////////////////
