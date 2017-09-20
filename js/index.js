@@ -59,11 +59,22 @@
   }
 
   function injectCodeflower() {
+
+    // the distance between the iframe and the edge of the window, in pixels
+    var verticalMargin = 60;
+    var horizontalMargin = 75;
+
+    var contStyle = (
+      'width: calc(100vw - ' + (2 * horizontalMargin) + 'px); ' + 
+      'height: calc(100vh - ' + (2 * verticalMargin) + 'px); ' + 
+      'padding: 0px; margin: 0 auto;'
+    );
+
     // add a container to the page to hold the iframe
     var container = $(
       '<div ' + 
         'class="container codeflower" ' +
-        'style="width: 90vw; height: 80vh; padding: 0px; margin: 0 auto;">' +
+        'style="' + contStyle + '">' +
       '</div>'
     );
     $('.pagehead').next().replaceWith(container);
@@ -75,10 +86,15 @@
     container.append(
       '<iframe ' +
         'src="' + chrome.runtime.getURL('html/frame.html') + '" ' + 
-        'style="width: 100%; height: 100%; border: none; overflower: hidden;" ' + 
+        'style="width: 100%; height: 100%; border: none;" ' + 
         'allowfullscreen>' + 
       '</iframe>'
     );
+
+    // scroll the page so that the iframe is vertically centered
+    $('body').animate({
+      scrollTop: container.offset().top - verticalMargin
+    }, 500);
   }
 
   /////////////////// MAIN ///////////////////
