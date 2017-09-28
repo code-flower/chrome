@@ -92,7 +92,7 @@
     );
 
     // scroll the page so that the iframe is vertically centered
-    $('body').animate({
+    $('html, body').animate({
       scrollTop: container.offset().top - verticalMargin
     }, 500);
   }
