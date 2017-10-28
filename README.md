@@ -1,8 +1,8 @@
 
-This chrome extension adds a "Codeflower" menu item to the "Insights" dropdown on github. When you click the menu item, the codeflower app is loaded up in an iframe and passed the name of the repo as a query param, like this:
+This chrome extension appends a "Codeflower" tab to the navigation bar on github. When you click the tab, the client-web application is loaded up in an iframe, and passed the name of the repo as a query param, like this:
 
 ```
-<iframe src="https://codeflower.la/?owner=[repo owner]&name=[repo name]&branch=[name of branch]"></iframe>
+<iframe src="https://web.codeflower.la?context=chrome&owner=[repo owner]&name=[repo name]&branch=[name of branch]"></iframe>
 ```
 
 Although this seems straightforward, github's content security policy prevents you from directly injecting an iframe whose source is a foreign domain. The problem, and solution, are described here:

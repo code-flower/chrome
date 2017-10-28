@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "codeflower-chrome",
+  "name": "Codeflower",
   "version": "0.1",
   "background": {
     "scripts": ["js/background.js"],
@@ -11,8 +11,8 @@
     "js": ["js/jquery.js", "js/index.js"]
   }],
   "web_accessible_resources": ["html/frame.html", "js/frame.js"],
-  "icons": { 
+  "icons": {
     "48": "images/icon48.png",
-    "128": "images/icon48.png" 
+    "128": "images/icon48.png"
   }
 }
