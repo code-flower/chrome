@@ -11,21 +11,24 @@
     $.getJSON(configUrl, function(config) {
 
       // construct url for the inner iframe
-      var url = config.originUrl + 
-                '?context=chrome' + 
-                '&owner=' + repo.owner + 
-                '&name='  + repo.name + 
+      var url = config.originUrl +
+                '?context=chrome' +
+                '&owner=' + repo.owner +
+                '&name='  + repo.name +
                 (repo.branch ? '&branch=' + repo.branch : '');
 
       // add the inner iframe to the body
-      $('body').append(    
+      var frame = $(
         '<iframe ' +
-          'src="' + url + '" ' + 
-          'style="width: 100%; height: 100%; border: none;" ' + 
-          'allowfullscreen>' + 
+          'src="' + url + '" ' +
+          'style="width: 100%; height: 100%; border: none;" ' +
+          'allowfullscreen>' +
         '</iframe>'
       );
+      $('body').append(frame);
 
+      // when src is loaded...
+      //frame.on('load', function() {})
     });
   });
 
