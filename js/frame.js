@@ -1,5 +1,5 @@
 
-// this runs inside the iframe that gets added in index.js
+// this runs inside the iframe that gets added in main.js
 
 (function($) {
 

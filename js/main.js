@@ -1,4 +1,12 @@
 
+/*
+  This script runs whenever the user navigates to github.com.
+  It adds a Codeflower tab to github's navigation bar. When the
+  tab is clicked, the script adds an iframe to the page, which
+  runs a script that creates another iframe within the outer iframe.
+  That inner iframe loads content from web.codeflower.la.
+*/
+
 (function($) {
 
   //////////////// FUNCTIONS /////////////////

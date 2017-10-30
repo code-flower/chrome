@@ -8,9 +8,9 @@
   },
   "content_scripts": [{
     "matches": ["https://github.com/*"],
-    "js": ["js/jquery.js", "js/index.js"]
+    "js": ["js/jquery.js", "js/main.js"]
   }],
-  "web_accessible_resources": ["html/frame.html", "js/frame.js"],
+  "web_accessible_resources": ["html/frame.html"],
   "icons": {
     "48": "images/icon48.png",
     "128": "images/icon48.png"
