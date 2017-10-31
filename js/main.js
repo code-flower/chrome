@@ -9,6 +9,8 @@
 
 (function($) {
 
+  var currentRepo;
+
   //////////////// FUNCTIONS /////////////////
 
   // determine whether this is a page when we should run the code
@@ -18,19 +20,19 @@
 
   // determine what repo/branch is on the page
   function getRepo() {
-    var path = window.location.pathname.substring(1);
-    var arr1 = path.split('/tree/');
-    var arr2 = arr1[0].split('/');
-
+    var match = window.location.pathname.match(/\/([^\/]*)\/([^\/]*)/);
+    var branch = $('.branch-select-menu .select-menu-item.selected .select-menu-item-text').text().trim();
     return {
-      owner:  arr2[0],
-      name:   arr2[1],
-      branch: arr1[1] || null
+      owner: match[1],
+      name:  match[2],
+      branch: branch || null
     };
   }
 
   // add the Codeflower tab to the navigation bar
   function addTab() {
+    // save the current repo
+    currentRepo = getRepo();
 
     // the icon
     var octicon = (
@@ -42,7 +44,7 @@
     // add tab to navigation bar
     $('.reponav').append(
       '<a ' +
-        'id="codeflower-init"' +
+        'id="codeflower-init" ' +
         'class="reponav-item" ' +
         'href="#">' +
         octicon +
@@ -63,7 +65,6 @@
       // inject codeflower into the DOM
       injectCodeflower();
     });
-
   }
 
   function injectCodeflower() {
@@ -120,7 +121,7 @@
       // response to requests for the repo from the frame script
       chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         if (request.type === 'get-repo')
-          sendResponse(getRepo());
+          sendResponse(currentRepo);
       });
     }
 

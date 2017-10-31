@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Codeflower",
-  "version": "0.1",
+  "description": "Visualize github repos.",
+  "version": "0.1.1",
   "background": {
     "scripts": ["js/background.js"],
     "persistent": false
