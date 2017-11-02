@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
   "name": "Codeflower",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Visualize repos on github.",
   "icons": {
-    "48": "images/icon48.png",
-    "128": "images/icon48.png"
+    "48": "images/icon128.png",
+    "128": "images/icon128.png"
   },
   "author": "Jake Mensch",
   "background": {
