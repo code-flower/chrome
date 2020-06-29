@@ -20,12 +20,15 @@
 
   // determine what repo/branch is on the page
   function getRepo() {
-    var match = window.location.pathname.match(/\/([^\/]*)\/([^\/]*)/);
-    var branch = $('.branch-select-menu .select-menu-item.selected .select-menu-item-text').text().trim();
+    var url = window.location.pathname;
+
+    var ownerAndName = url.match(/\/([^\/]*)\/([^\/]*)/);
+    var branch = url.match(/\/tree\/([^\/]*)$/);
+
     return {
-      owner: match[1],
-      name:  match[2],
-      branch: branch || null
+      owner: ownerAndName[1],
+      name:  ownerAndName[2],
+      branch: branch && branch[1]
     };
   }
 
